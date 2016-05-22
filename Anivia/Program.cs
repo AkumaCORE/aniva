@@ -34,7 +34,8 @@ namespace Anivia
                 // therefore we return
                 return;
             }
-
+            Q = new Spell.Skillshot(SpellSlot.Q, 900, SkillShotType.Linear, 250, 1500, 125);
+            Q.AllowedCollisionCount = int.MaxValue;
             // Initialize the classes that we need
             Config.Initialize();
             SpellManager.Initialize();
