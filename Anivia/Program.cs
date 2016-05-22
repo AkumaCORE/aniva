@@ -35,8 +35,7 @@ namespace Anivia
                 // therefore we return
                 return;
             }
-            Q = new Spell.Skillshot(SpellSlot.Q, 900, EloBuddy.SDK.Enumerations.SkillShotType.Linear, 0, 850, 110);
-            Q.AllowedCollisionCount = int.MaxValue;
+
 
             // Initialize the classes that we need
             Config.Initialize();
@@ -64,6 +63,8 @@ namespace Anivia
             {
                return;
             }
+            Q = new Spell.Skillshot(SpellSlot.Q, 900, EloBuddy.SDK.Enumerations.SkillShotType.Linear, 0, 850, 110);
+            Q.AllowedCollisionCount = int.MaxValue;
             if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe && !Sender.IsMinion && !Sender.IsMonster)
             {
                 {
