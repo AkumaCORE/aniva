@@ -59,7 +59,7 @@ namespace Anivia
         }
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base target, GameObjectProcessSpellCastEventArgs args)
         {
-            if (Sender == null || Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.harrass))
+            if (Sender == null || Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass))
             {
                return;
             }
