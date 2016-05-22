@@ -59,7 +59,7 @@ namespace Anivia
         }
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base target, GameObjectProcessSpellCastEventArgs args)
         {
-            if (Sender == null || Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee))
+            if (Sender == null || Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.harrass))
             {
                return;
             }
@@ -68,10 +68,7 @@ namespace Anivia
             if (!target.IsDashing() && target.Type == GameObjectType.AIHeroClient && target.IsValidTarget(Q.Range) && Q.IsReady() && target.IsEnemy && Player.Instance.Spellbook.GetSpell(SpellSlot.Q).ToggleState == 1 && PermaActive.missile == null)
             {
                 {
-                    PermaActive.castedForChampion = true;
-                    PermaActive.castedForMinions = false;
-                    
-                    Q.Cast(target);
+                Q.Cast(target);
                 }
             } 
         }
