@@ -18,6 +18,7 @@ namespace Anivia
         // Change this line to the champion you want to make the addon for,
         // watch out for the case being correct!
         public const string ChampName = "Anivia";
+         public static Spell.Skillshot Q { get; private set; }
 
         public static void Main(string[] args)
         {
@@ -34,6 +35,8 @@ namespace Anivia
                 // therefore we return
                 return;
             }
+            Q = new Spell.Skillshot(SpellSlot.Q, 900, EloBuddy.SDK.Enumerations.SkillShotType.Linear, 0, 850, 110);
+            Q.AllowedCollisionCount = int.MaxValue;
 
             // Initialize the classes that we need
             Config.Initialize();
