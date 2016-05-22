@@ -57,7 +57,7 @@ namespace Anivia
             if (Settings._drawQ.CurrentValue || Settings._drawQ.CurrentValue || Settings._drawE.CurrentValue || Settings._drawR.CurrentValue)
                 EloBuddy.SDK.Notifications.Notifications.Show(new EloBuddy.SDK.Notifications.SimpleNotification("Q missing", "If Q is missing, turn up the Q accuracy in the settings to about 140 - 150. Good Luck, Summoner"), 20000);
         }
-        private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base target, GameObjectProcessSpellCastEventArgs args)
+        private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base Sender, GameObjectProcessSpellCastEventArgs args)
         {
             if (Sender == null || Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass))
             {
@@ -65,10 +65,10 @@ namespace Anivia
             }
             Q = new Spell.Skillshot(SpellSlot.Q, 900, EloBuddy.SDK.Enumerations.SkillShotType.Linear, 0, 850, 110);
             Q.AllowedCollisionCount = int.MaxValue;
-            if (!target.IsDashing() && target.Type == GameObjectType.AIHeroClient && target.IsValidTarget(Q.Range) && Q.IsReady() && target.IsEnemy && Player.Instance.Spellbook.GetSpell(SpellSlot.Q).ToggleState == 1 && PermaActive.missile == null)
+            if (!target.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy && Player.Instance.Spellbook.GetSpell(SpellSlot.Q).ToggleState == 1 && PermaActive.missile == null)
             {
                 {
-                Q.Cast(target);
+                Q.Cast(Sender);
                 }
             } 
         }
