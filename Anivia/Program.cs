@@ -50,12 +50,27 @@ namespace Anivia
             Player.OnLevelUp += Anivia.Modes.PermaActive.autoLevelSkills;
             Dash.OnDash += PermaActive.Dash_OnDash;
             Gapcloser.OnGapcloser += PermaActive.antiGapcloser;
+            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
             GameObject.OnCreate += PermaActive.GameObject_OnCreate;
             if (Settings._drawQ.CurrentValue || Settings._drawQ.CurrentValue || Settings._drawE.CurrentValue || Settings._drawR.CurrentValue)
                 EloBuddy.SDK.Notifications.Notifications.Show(new EloBuddy.SDK.Notifications.SimpleNotification("Q missing", "If Q is missing, turn up the Q accuracy in the settings to about 140 - 150. Good Luck, Summoner"), 20000);
         }
         
+        private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base Sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            
+            if (Sender == null || !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LastHit))
+            {
+               return;
+            }
 
+            if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
+            {
+                {
+                    Q.Cast(Sender);
+                }
+            } 
+        }
         private static void OnDraw(EventArgs args)
         {
             // Draw range circles of our spells
