@@ -68,6 +68,9 @@ namespace Anivia
             if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy && Player.Instance.Spellbook.GetSpell(SpellSlot.Q).ToggleState == 1 && PermaActive.missile == null)
             {
                 {
+                    PermaActive.castedForChampion = true;
+                    PermaActive.castedForMinions = false;
+                    PermaActive.castedOn = Sender;
                     Q.Cast(Sender);
                 }
             } 
