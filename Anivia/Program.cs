@@ -65,7 +65,7 @@ namespace Anivia
             }
             Q = new Spell.Skillshot(SpellSlot.Q, 900, EloBuddy.SDK.Enumerations.SkillShotType.Linear, 0, 850, 110);
             Q.AllowedCollisionCount = int.MaxValue;
-            if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
+            if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy && Player.Instance.Spellbook.GetSpell(SpellSlot.Q).ToggleState == 1 && PermaActive.missile == null)
             {
                 {
                     Q.Cast(Sender);
