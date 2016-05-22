@@ -46,6 +46,8 @@ namespace Anivia
             }
 
             // Listen to events we need
+            Q = new Spell.Skillshot(SpellSlot.Q, 900, EloBuddy.SDK.Enumerations.SkillShotType.Linear, 0, 850, 110);
+            Q.AllowedCollisionCount = int.MaxValue;
             Drawing.OnDraw += OnDraw;
             Player.OnLevelUp += Anivia.Modes.PermaActive.autoLevelSkills;
             Dash.OnDash += PermaActive.Dash_OnDash;
@@ -63,8 +65,6 @@ namespace Anivia
             {
                return;
             }
-            Q = new Spell.Skillshot(SpellSlot.Q, 800, EloBuddy.SDK.Enumerations.SkillShotType.Linear, 0, 850, 110);
-            Q.AllowedCollisionCount = int.MaxValue;
             if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
             {
                 {
