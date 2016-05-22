@@ -70,7 +70,7 @@ namespace Anivia
                 {
                     PermaActive.castedForChampion = true;
                     PermaActive.castedForMinions = false;
-                    PermaActive.castedOn = target;
+                    
                     Q.Cast(target);
                 }
             } 
