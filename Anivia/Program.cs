@@ -63,7 +63,8 @@ namespace Anivia
             {
                return;
             }
-
+            Q = new Spell.Skillshot(SpellSlot.Q, 800, EloBuddy.SDK.Enumerations.SkillShotType.Linear, 0, 850, 110);
+            Q.AllowedCollisionCount = int.MaxValue;
             if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
             {
                 {
